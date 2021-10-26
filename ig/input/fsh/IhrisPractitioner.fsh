@@ -195,8 +195,6 @@ Title:           "Relationship"
 * #spouse "Spouse" "Spouse"
 * #mother "Mother" "Mother"
 * #father "Father" "Father"
-* #adoptedchild "Adopted Child" "Adopted Child"
-* #bilogicalChild "Biological Child" "Biological Child"
 * #other "other" "other"
 
 ValueSet:         IhrisRelationValueSet

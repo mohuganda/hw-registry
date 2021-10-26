@@ -16,11 +16,11 @@
             "code": "1.2.840.10065.1.12.1.14"
           }
         ],
-        "when": "2021-10-15T10:29:53.997Z",
+        "when": "2021-10-26T16:54:31.563Z",
         "who": {
           "reference": "http://ihris.org/fhir/Organization/ihris"
         },
-        "data": "zE5qnJbNXLvHqTnS6G1CTzGmz+lNvjZmWKfpTsIbSUdAYqlHJhUWYXOPJ3UvKOcOmaTLX1oHgEoT9/AvWHYSS9+EIZzXLP5ylgiXndIHVC45d0PqSSfM5arxOq6JGuD3OIg7PMI8SRpacQBxHsHKB5vJC4voopbYrXhK3X6p3Hs="
+        "data": "H10HHSPyJI8n1Zpkr5criVxeBs810fQGUPSa7IH35QE8V3I+V3JxlYpNTI6NMYqhoRvqV1ihlHBAAa/ZwbTdlzkDJcVhe0ZP0cBWrFJb+2hGq7ATIaY9blv6yl/pPahrgN3C64xd/3oWbtaz73RcgPH/O5JJ4+ltYBTK5dWsroM="
       }
     },
     {
@@ -28,15 +28,15 @@
       "part": [
         {
           "name": "site:title",
-          "valueString": "Manage"
+          "valueString": "MoH"
         },
         {
           "name": "site:site",
-          "valueString": "Demo"
+          "valueString": "National Health Worker Registry"
         },
         {
           "name": "site:logo",
-          "valueString": "iHRIS5Logo.png"
+          "valueString": "MoHlogo.png"
         },
         {
           "name": "site:auth:local:method",
@@ -60,7 +60,7 @@
         },
         {
           "name": "site:footer:links:about:text",
-          "valueString": "About iHRIS"
+          "valueString": "About NHWR"
         },
         {
           "name": "site:footer:links:about:to",
@@ -76,11 +76,11 @@
         },
         {
           "name": "site:footer:links:ihris:text",
-          "valueString": "iHRIS Website"
+          "valueString": "MoH Website"
         },
         {
           "name": "site:footer:links:ihris:href",
-          "valueString": "http://ihris.org/"
+          "valueString": "http://health.go.ug/"
         },
         {
           "name": "site:nav:active",
@@ -88,7 +88,7 @@
         },
         {
           "name": "site:nav:menu:person:text",
-          "valueString": "People"
+          "valueString": "Health Workers"
         },
         {
           "name": "site:nav:menu:person:order",
@@ -100,7 +100,7 @@
         },
         {
           "name": "site:nav:menu:person:menu:person_search:text",
-          "valueString": "Search People"
+          "valueString": "Search Health Workers"
         },
         {
           "name": "site:nav:menu:person:menu:person_search:url",
@@ -115,40 +115,12 @@
           "valueString": "/questionnaire/ihris-practitioner/practitioner"
         },
         {
-          "name": "site:nav:menu:position:text",
-          "valueString": "Positions"
-        },
-        {
-          "name": "site:nav:menu:position:order",
-          "valueString": "2"
-        },
-        {
-          "name": "site:nav:menu:position:icon",
-          "valueString": "mdi-account-multiple"
-        },
-        {
-          "name": "site:nav:menu:position:menu:position_search:text",
-          "valueString": "Search Positions"
-        },
-        {
-          "name": "site:nav:menu:position:menu:position_search:url",
-          "valueString": "/resource/search/practitionerrole"
-        },
-        {
-          "name": "site:nav:menu:position:menu:position_add:text",
-          "valueString": "Add Position"
-        },
-        {
-          "name": "site:nav:menu:position:menu:position_add:url",
-          "valueString": "/resource/add/practitionerrole"
-        },
-        {
           "name": "site:nav:menu:location:text",
           "valueString": "Locations and Facilities"
         },
         {
           "name": "site:nav:menu:location:order",
-          "valueString": "4"
+          "valueString": "2"
         },
         {
           "name": "site:nav:menu:location:icon",
@@ -171,56 +143,12 @@
           "valueString": "/resource/search/facility"
         },
         {
-          "name": "site:nav:menu:mhero:order",
-          "valueString": "3"
-        },
-        {
-          "name": "site:nav:menu:mhero:text",
-          "valueString": "mHero"
-        },
-        {
-          "name": "site:nav:menu:mhero:icon",
-          "valueString": "mdi-cellphone-basic"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:message:text",
-          "valueString": "Send Messages"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:message:url",
-          "valueString": "/page/mhero"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:scheduledcommunications:text",
-          "valueString": "Scheduled Messages"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:scheduledcommunications:url",
-          "valueString": "/page/mhero-scheduled-message"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:groups:text",
-          "valueString": "Contact Groups"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:groups:url",
-          "valueString": "/page/contact-groups"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:reports:text",
-          "valueString": "Reports"
-        },
-        {
-          "name": "site:nav:menu:mhero:menu:reports:url",
-          "valueString": "/page/mhero-reports"
-        },
-        {
           "name": "site:nav:menu:database:text",
           "valueString": "Database"
         },
         {
           "name": "site:nav:menu:database:order",
-          "valueString": "4"
+          "valueString": "3"
         },
         {
           "name": "site:nav:menu:database:icon",
@@ -287,18 +215,6 @@
           "valueString": "5"
         },
         {
-          "name": "site:nav:menu:database:menu:leave-type:text",
-          "valueString": "Leave Types"
-        },
-        {
-          "name": "site:nav:menu:database:menu:leave-type:url",
-          "valueString": "/resource/search/leave-type"
-        },
-        {
-          "name": "site:nav:menu:database:menu:leave-type:order",
-          "valueString": "6"
-        },
-        {
           "name": "site:nav:menu:database:menu:employment-status:text",
           "valueString": "Employment Status"
         },
@@ -308,7 +224,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:employment-status:order",
-          "valueString": "7"
+          "valueString": "6"
         },
         {
           "name": "site:nav:menu:database:menu:reason-departure:text",
@@ -320,7 +236,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:reason-departure:order",
-          "valueString": "8"
+          "valueString": "7"
         },
         {
           "name": "site:nav:menu:database:menu:educational-major:text",
@@ -332,7 +248,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:educational-major:order",
-          "valueString": "9"
+          "valueString": "8"
         },
         {
           "name": "site:nav:menu:database:menu:degree:text",
@@ -344,7 +260,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:degree:order",
-          "valueString": "10"
+          "valueString": "9"
         },
         {
           "name": "site:nav:menu:database:menu:education-level:text",
@@ -356,7 +272,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:education-level:order",
-          "valueString": "11"
+          "valueString": "10"
         },
         {
           "name": "site:nav:menu:database:menu:institution-type:text",
@@ -368,7 +284,7 @@
         },
         {
           "name": "site:nav:menu:database:menu:institution-type:order",
-          "valueString": "12"
+          "valueString": "11"
         },
         {
           "name": "site:nav:menu:database:menu:institution:text",
@@ -381,42 +297,6 @@
         {
           "name": "site:nav:menu:database:menu:institution:order",
           "valueString": "13"
-        },
-        {
-          "name": "site:nav:menu:database:menu:disciplineaction:text",
-          "valueString": "Discipline Action Type"
-        },
-        {
-          "name": "site:nav:menu:database:menu:disciplineaction:url",
-          "valueString": "/resource/search/discipline-action-type"
-        },
-        {
-          "name": "site:nav:menu:database:menu:disciplineaction:order",
-          "valueString": "14"
-        },
-        {
-          "name": "site:nav:menu:database:menu:salarysource:text",
-          "valueString": "Funds Source"
-        },
-        {
-          "name": "site:nav:menu:database:menu:salarysource:url",
-          "valueString": "/resource/search/salary-source"
-        },
-        {
-          "name": "site:nav:menu:database:menu:salarysource:order",
-          "valueString": "14"
-        },
-        {
-          "name": "site:nav:menu:database:menu:frequency:text",
-          "valueString": "Pay Frequency"
-        },
-        {
-          "name": "site:nav:menu:database:menu:frequency:url",
-          "valueString": "/resource/search/frequency"
-        },
-        {
-          "name": "site:nav:menu:database:menu:frequency:order",
-          "valueString": "16"
         },
         {
           "name": "site:nav:menu:dashboard:text",
@@ -551,38 +431,6 @@
           "valueString": "$1"
         },
         {
-          "name": "workflow:processor:endrole:library",
-          "valueString": "ihris-workflow-endrole"
-        },
-        {
-          "name": "workflow:questionnaire:endrole:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-endrole"
-        },
-        {
-          "name": "workflow:processor:promotion:library",
-          "valueString": "ihris-workflow-promotion"
-        },
-        {
-          "name": "workflow:questionnaire:promotion:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-promotion"
-        },
-        {
-          "name": "workflow:processor:leave:file",
-          "valueString": "../modules/workflowLeave"
-        },
-        {
-          "name": "workflow:questionnaire:leave:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-leave"
-        },
-        {
-          "name": "workflow:processor:performance:file",
-          "valueString": "../modules/workflowPerformance"
-        },
-        {
-          "name": "workflow:questionnaire:performance:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-performance"
-        },
-        {
           "name": "workflow:processor:education:file",
           "valueString": "../modules/workflowEducationHistory"
         },
@@ -605,22 +453,6 @@
         {
           "name": "workflow:questionnaire:emergency:url",
           "valueString": "http://ihris.org/fhir/Questionnaire/ihris-emergency"
-        },
-        {
-          "name": "workflow:processor:discipline:file",
-          "valueString": "../modules/workflowDiscipline"
-        },
-        {
-          "name": "workflow:questionnaire:discipline:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-discipline"
-        },
-        {
-          "name": "workflow:processor:salary:file",
-          "valueString": "../modules/workflowSalary"
-        },
-        {
-          "name": "workflow:questionnaire:salary:url",
-          "valueString": "http://ihris.org/fhir/Questionnaire/ihris-salary"
         },
         {
           "name": "workflow:processor:user:file",

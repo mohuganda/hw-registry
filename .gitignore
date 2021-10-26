@@ -23,6 +23,9 @@ typings/
 # Optional npm cache directory
 .npm
 
+# keys
+*.pem
+
 # Optional eslint cache
 .eslintcache
 
