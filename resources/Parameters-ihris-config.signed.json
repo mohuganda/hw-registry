@@ -16,11 +16,11 @@
             "code": "1.2.840.10065.1.12.1.14"
           }
         ],
-        "when": "2021-10-26T16:54:31.563Z",
+        "when": "2021-10-27T07:30:53.342Z",
         "who": {
           "reference": "http://ihris.org/fhir/Organization/ihris"
         },
-        "data": "H10HHSPyJI8n1Zpkr5criVxeBs810fQGUPSa7IH35QE8V3I+V3JxlYpNTI6NMYqhoRvqV1ihlHBAAa/ZwbTdlzkDJcVhe0ZP0cBWrFJb+2hGq7ATIaY9blv6yl/pPahrgN3C64xd/3oWbtaz73RcgPH/O5JJ4+ltYBTK5dWsroM="
+        "data": "JwGYUGXTOdbwdp9FUrhg/wQdcza0iEEvESraFmCtfwyw5YUQTAjiTmzJHz/bcM2F9fxJQlTmXPEmaOiYqjQep8aJqzdwOoDj2EvyINPtTylKRbV4dop0txSPgUDtmX56MANMd/LwuFU/ul1Etg15Z5puJKM/+j/vs0YgY1n4yDw="
       }
     },
     {
@@ -56,7 +56,7 @@
         },
         {
           "name": "site:auth:local:btn:text",
-          "valueString": "Sign in with iHRIS"
+          "valueString": "Sign In"
         },
         {
           "name": "site:footer:links:about:text",
