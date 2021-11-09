@@ -95,9 +95,26 @@ Description:    "iHRIS profile of Practitioner."
     IhrisPractitionerFather named father 0..1 MS and
     IhrisPractitionerMother named mother 0..1 MS and
     IhrisPractitionerBirthPlace named birthPlace 0..1 MS and
-    IhrisPractitionerEmail named email 0..* MS and
-    IhrisPractitionerPhone named phone 0..* MS and
+    /*IhrisPractitionerEmail named email 0..* MS and
+    IhrisPractitionerPhone named phone 0..* MS and*/
     IhrisPractitionerEmergency named emergency 0..1 MS
+* extension[address].valueReference MS
+* extension[address].valueReference ^label = "Address"
+* extension[nationality].valueCoding MS
+* extension[nationality].valueCoding ^label = "Nationality"
+* extension[maritalStatus].valueCoding MS
+* extension[maritalStatus].valueCoding ^label = "Marital Status"
+* extension[father].valueString MS
+* extension[father].valueString ^label = "Father's Name"
+* extension[mother].valueString MS
+* extension[mother].valueString ^label = "Mother's Name"
+* extension[birthPlace].valueReference MS
+* extension[birthPlace].valueReference ^label = "Birth Place"
+* extension[emergency] ^label = "Emergency Contact"
+* extension[emergency] MS
+* extension[emergency].extension[name].valueString MS
+* extension[emergency].extension[phone].valueString MS
+* extension[emergency].extension[email].valueString MS
 
 Extension:      IhrisPractitionerLanguageProficiency
 Id:             ihris-practitioner-language-proficiency
