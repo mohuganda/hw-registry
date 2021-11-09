@@ -1,8 +1,8 @@
 Profile:        IhrisBasicEducationHistory
 Parent:         IhrisPractitionerBasic
 Id:             ihris-basic-education-history
-Title:          "Education History Information"
-Description:    "iHRIS Profile of the Basic resource for Education History."
+Title:          "Education Details"
+Description:    "iHRIS Profile of the Basic resource for Education Details."
 * extension[practitioner].valueReference 1..1 MS
 * extension[practitioner].valueReference ^label = "Health Worker"
 * extension contains

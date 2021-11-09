@@ -3,7 +3,6 @@ Description:    "birthDate must be more than 18 years ago."
 Expression:     "birthDate < today() - 18 years"
 Severity:       #error
 
-
 Profile:        IhrisPractitioner
 Parent:         Practitioner
 Id:             ihris-practitioner
@@ -25,18 +24,31 @@ Description:    "iHRIS profile of Practitioner."
 * identifier.system ^label = "System"
 * identifier.value MS
 * identifier.value ^label = "Value"
+* identifier.extension contains
+    IhrisPractitionerDateofIssue named date 0..* MS and
+    IhrisPractitionerCountryofIssue named country 0..* MS
+* identifier.extension[date] MS
+* identifier.extension[date] ^label = "Date of Issue"
+* identifier.extension[date].valueDateMS
+* identifier.extension[country] MS
+* identifier.extension[country] ^label = "Country of Issuance"
+* identifier.extension[country].valueCoding MS
 * name 1..* MS
 * name ^label = "Name"
 * name.use MS
 * name.use ^label = "Use"
 * name.family 1..1 MS
-* name.family ^label = "Family"
+* name.family ^label = "Surname"
 * name.family ^constraint[0].key = "ihris-name-check"
 * name.family ^constraint[0].severity = #error
 * name.family ^constraint[0].expression = "matches('^[A-Za-z ]*$')"
 * name.family ^constraint[0].human = "Name must be only text."
 * name.given 1..* MS
-* name.given ^label = "Given Name"
+* name.given ^label = "First Name "
+* name.given ^constraint[0].key = "ihris-name-check"
+* name.given ^constraint[0].severity = #error
+* name.given ^constraint[0].expression = "matches('^[A-Za-z ]*$')"
+* name.given ^constraint[0].human = "Name must be only text."
 * name.prefix MS
 * name.prefix ^label = "Prefix"
 * name.suffix MS
@@ -52,25 +64,8 @@ Description:    "iHRIS profile of Practitioner."
 * telecom ^constraint[0].key = "ihris-search-phone"
 * telecom ^constraint[0].severity = #error
 * telecom ^constraint[0].expression = "'Practitioner' | 'phonenumber' | iif(value.exists(), system & '|' & value, value)"
-* telecom ^constraint[0].human = "The identifier must be unique and another record has this identifier"
-* address 0..* MS
-* address ^label = "Address"
-* address.use MS
-* address.use ^label = "Use"
-* address.type MS
-* address.type ^label = "Type"
-* address.line 1..1 MS
-* address.line ^label = "Line"
-* address.city MS
-* address.city ^label = "City"
-* address.district MS
-* address.district ^label = "District"
-* address.state MS
-* address.state ^label = "State"
-* address.postalCode MS
-* address.postalCode ^label = "Postal Code"
-* address.country MS
-* address.country ^label = "Country"
+* telecom ^constraint[0].human = "The Phone number must be unique and another record has this Phone Number"
+* address 0..0
 * gender 1..1 MS
 * gender ^label = "Gender"
 * birthDate MS
@@ -92,14 +87,17 @@ Description:    "iHRIS profile of Practitioner."
     IhrisPractitionerLanguageProficiency named proficiency 0..* MS
 * communication.extension[proficiency] MS
 * communication.extension[proficiency] ^label = "Language Proficiency"
-* communication.extension[proficiency].extension[level].valueCoding MS
 * communication.extension[proficiency].extension[type].valueCoding MS
 * extension contains
-    IhrisPractitionerResidence named residence 0..1 MS and
-    IhrisPractitionerNationality named nationality 0..1 and
-    IhrisPractitionerMaritalStatus named maritalStatus 0..1 and
-    IhrisPractitionerDependents named dependents 0..1
-* extension[residence].valueReference.reference MS
+    IhrisPractitionerAddress named address 0..1 MS and
+    IhrisPractitionerNationality named nationality 0..1 MS and
+    IhrisPractitionerMaritalStatus named maritalStatus 0..1 MS and
+    IhrisPractitionerFather named father 0..1 MS and
+    IhrisPractitionerMother named mother 0..1 MS and
+    IhrisPractitionerBirthPlace named birthPlace 0..1 MS and
+    IhrisPractitionerEmail named email 0..* MS and
+    IhrisPractitionerPhone named phone 0..* MS and
+    IhrisPractitionerEmergency named emergency 0..1 MS
 
 Extension:      IhrisPractitionerLanguageProficiency
 Id:             ihris-practitioner-language-proficiency
@@ -108,28 +106,23 @@ Description:    "iHRIS extension for Practitioner Language Proficiency."
 * ^context.type = #element
 * ^context.expression = "Practitioner"
 * extension contains
-    level 0..1 MS and
     type 0..* MS
-* extension[level].value[x] only Coding
-* extension[level].valueCoding 0..1 MS
-* extension[level].valueCoding from http://terminology.hl7.org/ValueSet/v3-LanguageAbilityProficiency
-* extension[level].valueCoding ^label = "Proficiency Level"
 * extension[type] ^label = "Proficiency Type"
 * extension[type].value[x] only Coding
 * extension[type].valueCoding 0..1 MS
 * extension[type].valueCoding ^label = "Proficiency Type"
 * extension[type].valueCoding from http://terminology.hl7.org/ValueSet/v3-LanguageAbilityMode
 
-Extension:      IhrisPractitionerResidence
-Id:             ihris-practitioner-residence
-Title:          "iHRIS Practitioner Residence"
-Description:    "iHRIS extension for Practitioner residence."
+Extension:      IhrisPractitionerAddress
+Id:             ihris-practitioner-address
+Title:          "iHRIS Practitioner address"
+Description:    "iHRIS extension for Practitioner address."
 * ^context.type = #element
 * ^context.expression = "Practitioner"
 * value[x] only Reference
 * valueReference 1..1 MS
-* valueReference ^label = "Residence"
-* valueReference ^constraint[0].key = "ihris-location-residence"
+* valueReference ^label = "Current Address"
+* valueReference ^constraint[0].key = "ihris-location-address"
 * valueReference ^constraint[0].severity = #warning
 * valueReference ^constraint[0].expression = "reference.matches('^Location/')"
 * valueReference ^constraint[0].human = "Must be a location"
@@ -140,20 +133,45 @@ Description:    "iHRIS extension for Practitioner residence."
 * valueReference.identifier 0..0
 * valueReference.display 0..0
 
-Extension:      IhrisPractitionerDependentDetail
-Id:             ihris-practitioner-dependent-detail
-Title:          "iHRIS Practitioner Dependent Detail"
-Description:    "iHRIS extension for Practitioner Dependent Detail."
+Extension:      IhrisPractitionerDateofIssue
+Id:             ihris-practitioner-dateofissue
+Title:          "iHRIS Practitioner Date of Issue"
+Description:    "iHRIS extension for Practitioner date of issue."
 * ^context.type = #element
 * ^context.expression = "Practitioner"
-* extension contains name 1..1 MS and
-    birthDate 1..1 MS
-* extension[name].value[x] only string
-* extension[name].valueString 1..1 MS
-* extension[name].valueString ^label = "Dependent's Name"
-* extension[birthDate].value[x] only date
-* extension[birthDate].valueDate 1..1 MS
-* extension[birthDate].valueDate ^label = "Dependent's Date of Birth"
+* value[x] only date
+* valueDate 1..1 MS
+* valueDate ^label = "Date of Issue"
+
+Extension:      IhrisPractitionerCountryofIssue
+Id:             ihris-practitioner-countryofissue
+Title:          "iHRIS Practitioner Country of Issue"
+Description:    "iHRIS extension for Practitioner Country of Issue."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only Coding
+* valueCoding 1..1 MS
+* valueCoding ^label = "Country of Issue"
+
+Extension:      IhrisPractitionerFather
+Id:             ihris-practitioner-father
+Title:          "iHRIS Practitioner Father Detail"
+Description:    "iHRIS extension for Practitioner Father Detail."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only string
+* valueString 1..1 MS
+* valueString ^label = "Father's Name"
+
+Extension:      IhrisPractitionerMother
+Id:             ihris-practitioner-mother
+Title:          "iHRIS Practitioner mother Detail"
+Description:    "iHRIS extension for Practitioner Mother's Detail."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only string
+* valueString 1..1 MS
+* valueString ^label = "Mother's Name"
 
 Extension:      IhrisPractitionerNationality
 Id:             ihris-practitioner-nationality
@@ -166,6 +184,57 @@ Description:    "iHRIS extension for Practitioner nationality."
 * valueCoding ^label = "Nationality"
 * valueCoding from http://hl7.org/fhir/ValueSet/iso3166-1-2 (required)
 
+Extension:      IhrisPractitionerBirthPlace
+Id:             ihris-practitioner-birthPlace
+Title:          "iHRIS Practitioner Birth Place"
+Description:    "iHRIS extension for Birth Place ."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only Reference
+* valueReference 1..1 MS
+* valueReference ^label = "Birth Place (District, Sub county, parish and village)"
+* valueReference ^constraint[0].key = "ihris-location-residence"
+* valueReference ^constraint[0].severity = #warning
+* valueReference ^constraint[0].expression = "reference.matches('^Location/')"
+* valueReference ^constraint[0].human = "Must be a location"
+* valueReference only Reference(IhrisJurisdiction)
+* valueReference.reference 1..1 MS
+* valueReference.reference ^label = "Location"
+* valueReference.type 0..0
+* valueReference.identifier 0..0
+* valueReference.display 0..0
+
+Extension:      IhrisPractitionerEmergency
+Id:             ihris-practitioner-emergency
+Title:          "iHRIS Practitioner Emergency"
+Description:    "iHRIS extension for Practitioner Emergency."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* extension contains name 0..1 MS and
+    phone 0..1 MS and
+    email 0..1 MS 
+* extension[name].value[x] only string
+* extension[name].valueString 0..1 MS
+* extension[name].valueString ^label = "Emergency Contact's Name"
+* extension[name].valueString ^constraint[0].key = "ihris-name-check"
+* extension[name].valueString ^constraint[0].severity = #error
+* extension[name].valueString ^constraint[0].expression = "matches('^[A-Za-z ]*$')"
+* extension[name].valueString ^constraint[0].human = "Name must be only text."
+* extension[phone].value[x] only string
+* extension[phone].valueString 0..1 MS
+* extension[phone].valueString ^label = "Emergency Contact's Phone number"
+* extension[phone].valueString ^constraint[0].key = "ihris-phone-check"
+* extension[phone].valueString ^constraint[0].severity = #error
+* extension[phone].valueString ^constraint[0].expression = "matches('^$|^(([+][2][5][6][7][0-9]{8})|([0][7][0-9]{8}))')"
+* extension[phone].valueString ^constraint[0].human = "Phone Number is not properly formatted."
+* extension[email].value[x] only string
+* extension[email].valueString 0..1 MS
+* extension[email].valueString ^label = "Emergency Contact's Phone number"
+* extension[email].valueString ^constraint[0].key = "ihris-email-check"
+* extension[email].valueString ^constraint[0].severity = #error
+* extension[email].valueString ^constraint[0].expression = "matches('^$|^([0-9a-zA-Z_.]+@([0-9a-zA-Z]+[.])+[a-zA-Z]{2,4}$)')"
+* extension[email].valueString ^constraint[0].human = "Work Email is not properly formatted."
+
 Extension:      IhrisPractitionerMaritalStatus
 Id:             ihris-practitioner-marital-status
 Title:          "iHRIS Practitioner Marital Status"
@@ -176,16 +245,6 @@ Description:    "iHRIS extension for Practitioner marital status."
 * valueCoding 1..1 MS
 * valueCoding ^label = "Marital Status"
 * valueCoding from http://hl7.org/fhir/ValueSet/marital-status (required)
-
-Extension:      IhrisPractitionerDependents
-Id:             ihris-practitioner-dependents
-Title:          "iHRIS Practitioner Dependents"
-Description:    "iHRIS extension for Practitioner number of dependents."
-* ^context.type = #element
-* ^context.expression = "Practitioner"
-* value[x] only positiveInt
-* valuePositiveInt 1..1 MS
-* valuePositiveInt ^label = "Number of Dependents"
 
 CodeSystem:      IhrisRelationCodesystem
 Id:              ihris-relation-codesystem
@@ -204,7 +263,35 @@ Title:            "iHRIS Relationship ValueSet"
 * ^version = "0.2.0"
 * codes from system IhrisRelationCodesystem
 
-Instance:       IhrisPractitionerQuestionnaire
+Extension:      IhrisPractitionerPhone
+Id:             ihris-personal-information-phone
+Title:          "iHRIS Personal Information phone"
+Description:    "iHRIS extension for Phone."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only string
+* valueString ^label = "Phone Number"
+* valueString 0..1 MS
+* valueString ^constraint[0].key = "ihris-phone-check"
+* valueString ^constraint[0].severity = #error
+* valueString ^constraint[0].expression = "matches('^$|^(([+][2][5][6][7][0-9]{8})|([0][7][0-9]{8}))')"
+* valueString ^constraint[0].human = "Phone Number is not properly formatted."
+
+Extension:      IhrisPractitionerEmail
+Id:             ihris-personal-information-email
+Title:          "iHRIS Personal Information email"
+Description:    "iHRIS extension for Email."
+* ^context.type = #element
+* ^context.expression = "Practitioner"
+* value[x] only string
+* valueString ^label = "Email"
+* valueString 0..1 MS
+* valueString ^constraint[0].key = "ihris-email-check"
+* valueString ^constraint[0].severity = #error
+* valueString ^constraint[0].expression = "matches('^$|^([0-9a-zA-Z_.]+@([0-9a-zA-Z]+[.])+[a-zA-Z]{2,4}$)')"
+* valueString ^constraint[0].human = "Work Email is not properly formatted."
+
+/*Instance:       IhrisPractitionerQuestionnaire
 InstanceOf:     IhrisQuestionnaire
 Usage:          #definition
 * title = "iHRIS Practitioner Questionnaire"
@@ -613,7 +700,7 @@ Usage:          #definition
 * item[0].item[1].item[4].type = #choice
 * item[0].item[1].item[4].answerValueSet = "http://ihris.org/fhir/ValueSet/ihris-shift-valueset"
 * item[0].item[1].item[4].required = true
-* item[0].item[1].item[4].repeats = false*/
+* item[0].item[1].item[4].repeats = false
 
 * item[0].item[1].item[4].linkId = "employmentStatus"
 * item[0].item[1].item[4].definition = "http://ihris.org/fhir/StructureDefinition/ihris-job-description#PractitionerRole.extension:employmentStatus.value[x]:valueCoding"
@@ -639,5 +726,5 @@ Usage:          #definition
 * item[0].item[1].item[6].repeats = false
 * item[0].item[1].item[6].readOnly = true
 * item[0].item[1].item[6].answerOption.valueCoding = http://ihris.org/fhir/CodeSystem/ihris-position-status#occupied
-* item[0].item[1].item[6].answerOption.initialSelected = true
+* item[0].item[1].item[6].answerOption.initialSelected = true*/
 

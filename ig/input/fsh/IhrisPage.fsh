@@ -160,7 +160,6 @@ Description:    "iHRIS Page Section information."
 * extension[resource].extension[action].extension[class].valueString MS
 * extension[resource].extension[action].extension[class].valueString ^label = "Element Class for the Action"
 
-
 Instance:       ihris-page-practitioner
 InstanceOf:     IhrisPage
 Title:          "Practitioner"
@@ -173,7 +172,7 @@ Usage:          #example
 * extension[display].extension[search][3].valueString = "Gender|Practitioner.gender|http://hl7.org/fhir/administrative-gender"
 * extension[display].extension[filter][0].valueString = "Name|name:contains"
 * extension[display].extension[filter][1].valueString = "Gender|gender|http://hl7.org/fhir/ValueSet/administrative-gender"
-* extension[display].extension[add].extension[url].valueUrl = "/questionnaire/ihris-practitioner/practitioner"
+* extension[display].extension[add].extension[url].valueUrl = "/resource/add/practitioner"
 * extension[display].extension[add].extension[icon].valueString = "mdi-account-plus"
 * extension[display].extension[add].extension[class].valueString = "accent"
 * extension[section][0].extension[title].valueString = "Health Worker"
