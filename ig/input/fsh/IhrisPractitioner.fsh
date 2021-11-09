@@ -25,11 +25,11 @@ Description:    "iHRIS profile of Practitioner."
 * identifier.value MS
 * identifier.value ^label = "Value"
 * identifier.extension contains
-    IhrisPractitionerDateofIssue named date 0..* MS and
-    IhrisPractitionerCountryofIssue named country 0..* MS
+    IhrisPractitionerDateofIssue named date 0..1 MS and
+    IhrisPractitionerCountryofIssue named country 0..1 MS
 * identifier.extension[date] MS
 * identifier.extension[date] ^label = "Date of Issue"
-* identifier.extension[date].valueDateMS
+* identifier.extension[date].valueDate MS
 * identifier.extension[country] MS
 * identifier.extension[country] ^label = "Country of Issuance"
 * identifier.extension[country].valueCoding MS
