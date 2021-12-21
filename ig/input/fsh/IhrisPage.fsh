@@ -232,26 +232,26 @@ Usage:          #example
 * extension[section][7].extension[resource].extension[action][0].extension[text].valueString = "View"
 * extension[section][7].extension[resource].extension[action][0].extension[row].valueBoolean = true
 * extension[section][7].extension[resource].extension[action][0].extension[class].valueString = "primary"
-* extension[section][8].extension[title].valueString = "Education History"
-* extension[section][8].extension[description].valueString = "Education History Details for the Person"
+* extension[section][8].extension[title].valueString = "Education Details"
+* extension[section][8].extension[description].valueString = "Education Details for the Person"
 * extension[section][8].extension[name].valueString = "education-history"
 * extension[section][8].extension[resource].extension[resource].valueReference = Reference(StructureDefinition/ihris-basic-education-history)
 * extension[section][8].extension[resource].extension[searchfield].valueString = "practitioner"
 * extension[section][8].extension[resource].extension[linkfield].valueString = "Basic.extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-practitioner-reference').valueReference.reference"
-* extension[section][8].extension[resource].extension[column][0].extension[header].valueString = "Education Institution"
-* extension[section][8].extension[resource].extension[column][0].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='institution').valueCoding"
-* extension[section][8].extension[resource].extension[column][1].extension[header].valueString = "Degree"
-* extension[section][8].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='degree').valueCoding"
-* extension[section][8].extension[resource].extension[column][1].extension[header].valueString = "level"
-* extension[section][8].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='level').valueCoding"
-* extension[section][8].extension[resource].extension[column][2].extension[header].valueString = "Educational Major"
-* extension[section][8].extension[resource].extension[column][2].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='educationalMajor').valueCoding"
-* extension[section][8].extension[resource].extension[column][3].extension[header].valueString = "Year"
-* extension[section][8].extension[resource].extension[column][3].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='year').valueDate"
-* extension[section][8].extension[resource].extension[column][4].extension[header].valueString = "Actions"
-* extension[section][8].extension[resource].extension[column][4].extension[field].valueString = "_action"
+* extension[section][8].extension[resource].extension[column][0].extension[header].valueString = "Primary education"
+* extension[section][8].extension[resource].extension[column][0].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='primary').valueCoding"
+* extension[section][8].extension[resource].extension[column][1].extension[header].valueString = "O-level"
+* extension[section][8].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='olevel').valueCoding"
+* extension[section][8].extension[resource].extension[column][2].extension[header].valueString = "A-Level"
+* extension[section][8].extension[resource].extension[column][2].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='alevel').valueCoding"
+* extension[section][8].extension[resource].extension[column][3].extension[header].valueString = "Tertiary education"
+* extension[section][8].extension[resource].extension[column][3].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='tertiary').valueString"
+* extension[section][8].extension[resource].extension[column][4].extension[header].valueString = "Speciality"
+* extension[section][8].extension[resource].extension[column][4].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-education-history').extension.where(url='speciality').valueString"
+* extension[section][8].extension[resource].extension[column][5].extension[header].valueString = "Actions"
+* extension[section][8].extension[resource].extension[column][5].extension[field].valueString = "_action"
 * extension[section][8].extension[resource].extension[action][0].extension[link].valueString = "/questionnaire/ihris-education-history/basic-education-history?practitioner=FHIRID"
-* extension[section][8].extension[resource].extension[action][0].extension[text].valueString = "Add Education History"
+* extension[section][8].extension[resource].extension[action][0].extension[text].valueString = "Add Education Detail"
 * extension[section][8].extension[resource].extension[action][0].extension[row].valueBoolean = false
 * extension[section][8].extension[resource].extension[action][0].extension[emptyDisplay].valueBoolean = true
 * extension[section][8].extension[resource].extension[action][0].extension[class].valueString = "primary"
@@ -282,53 +282,35 @@ Usage:          #example
 * extension[section][9].extension[resource].extension[action][1].extension[text].valueString = "View"
 * extension[section][9].extension[resource].extension[action][1].extension[row].valueBoolean = true
 * extension[section][9].extension[resource].extension[action][1].extension[class].valueString = "primary"
-
-Instance:       ihris-page-practitionerrole
-InstanceOf:     IhrisPage
-Title:          "iHRIS PractitionerRole Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(StructureDefinition/ihris-practitioner-role)
-* extension[display].extension[link].extension[field].valueString = "PractitionerRole.practitioner.reference"
-* extension[display].extension[link].extension[text].valueString = "View Practitioner"
-* extension[display].extension[link].extension[button].valueBoolean = true
-* extension[display].extension[link].extension[icon].valueString = "mdi-account-arrow-right"
-* extension[display].extension[link].extension[url].valueUrl = "/resource/view/practitioner/FIELD"
-* extension[display].extension[search][0].valueString = "Job|PractitionerRole.code[0].coding[0]"
-* extension[display].extension[search][1].valueString = "Start Date|PractitionerRole.period.start"
-* extension[display].extension[search][2].valueString = "Practitioner|PractitionerRole.practitioner"
-* extension[display].extension[search][3].valueString = "Facility|PractitionerRole.location"
-* extension[display].extension[search][4].valueString = "Specialty|PractitionerRole.specialty"
-* extension[display].extension[filter][0].valueString = "Job|role|http://ihris.org/fhir/ValueSet/ihris-job"
-* extension[section][0].extension[title].valueString = "Position"
-* extension[section][0].extension[description].valueString = "Position details"
-* extension[section][0].extension[name].valueString = "PractitionerRole"
-* extension[section][0].extension[field][0].valueString = "PractitionerRole.code"
-* extension[section][0].extension[field][1].valueString = "PractitionerRole.practitioner"
-* extension[section][0].extension[field][2].valueString = "PractitionerRole.location"
-* extension[section][0].extension[field][3].valueString = "PractitionerRole.period"
-* extension[section][0].extension[field][4].valueString = "PractitionerRole.specialty"
-* extension[section][0].extension[field][5].valueString = "PractitionerRole.identifier"
-
-Instance:       ihris-page-job
-InstanceOf:     IhrisPage
-Title:          "iHRIS Job CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-job)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[search][2].valueString = "Cadre|cadre"
-* extension[display].extension[search][3].valueString = "Classification|classification"
-* extension[section][0].extension[title].valueString = "Job"
-* extension[section][0].extension[description].valueString = "Job Titles"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.definition"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][3].valueString = "CodeSystem.cadre"
-* extension[section][0].extension[field][4].valueString = "CodeSystem.classification"
-* extension[section][0].extension[field][4].valueString = "CodeSystem.salary-grade"
+* extension[section][10].extension[title].valueString = "Professional License and Certification"
+* extension[section][10].extension[description].valueString = "Professional License and Certification for the Person"
+* extension[section][10].extension[name].valueString = "professional"
+* extension[section][10].extension[resource].extension[resource].valueReference = Reference(StructureDefinition/ihris-basic-professional)
+* extension[section][10].extension[resource].extension[searchfield].valueString = "practitioner"
+* extension[section][10].extension[resource].extension[linkfield].valueString = "Basic.extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-practitioner-reference').valueReference.reference"
+* extension[section][10].extension[resource].extension[column][0].extension[header].valueString = "Registration Status"
+* extension[section][10].extension[resource].extension[column][0].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='registrationStatus').valueCoding.display"
+* extension[section][10].extension[resource].extension[column][1].extension[header].valueString = "Certificate Name"
+* extension[section][10].extension[resource].extension[column][1].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='certification').valueString"
+* extension[section][10].extension[resource].extension[column][2].extension[header].valueString = "License Number"
+* extension[section][10].extension[resource].extension[column][2].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='license_number').valueString"
+* extension[section][10].extension[resource].extension[column][3].extension[header].valueString = "Issue Date"
+* extension[section][10].extension[resource].extension[column][3].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='issue_date').valueDate"
+* extension[section][10].extension[resource].extension[column][4].extension[header].valueString = "Expiration Date"
+* extension[section][10].extension[resource].extension[column][4].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='expiry_date').valueDate"
+* extension[section][10].extension[resource].extension[column][5].extension[header].valueString = "License Status"
+* extension[section][10].extension[resource].extension[column][5].extension[field].valueString = "extension.where(url='http://ihris.org/fhir/StructureDefinition/ihris-professional').extension.where(url='license_status').valueCoding.display"
+* extension[section][10].extension[resource].extension[column][6].extension[header].valueString = "Actions"
+* extension[section][10].extension[resource].extension[column][6].extension[field].valueString = "_action"
+* extension[section][10].extension[resource].extension[action][0].extension[link].valueString = "/resource/add/practitioner?practitioner=FHIRID"
+* extension[section][10].extension[resource].extension[action][0].extension[text].valueString = "Add Professional License and Certification"
+* extension[section][10].extension[resource].extension[action][0].extension[row].valueBoolean = false
+* extension[section][10].extension[resource].extension[action][0].extension[emptyDisplay].valueBoolean = true
+* extension[section][10].extension[resource].extension[action][0].extension[class].valueString = "primary"
+* extension[section][10].extension[resource].extension[action][1].extension[link].valueString = "/resource/view/professional/ITEMID"
+* extension[section][10].extension[resource].extension[action][1].extension[text].valueString = "View"
+* extension[section][10].extension[resource].extension[action][1].extension[row].valueBoolean = true
+* extension[section][10].extension[resource].extension[action][1].extension[class].valueString = "primary"
 
 Instance:       ihris-page-salary-grade
 InstanceOf:     IhrisPage
@@ -375,57 +357,6 @@ Usage:          #example
 * extension[section][0].extension[field][1].valueString = "CodeSystem.code"
 * extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
 
-Instance:       ihris-page-educational-major
-InstanceOf:     IhrisPage
-Title:          "iHRIS Educational Major CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-educational-major-codesystem)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Educational Major"
-* extension[section][0].extension[description].valueString = "Educational Major"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
-Instance:       ihris-page-employment-status
-InstanceOf:     IhrisPage
-Title:          "iHRIS Employment Status CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-employment-status-codesystem)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Employment Status"
-* extension[section][0].extension[description].valueString = "Employment Status"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
-Instance:       ihris-page-job-type
-InstanceOf:     IhrisPage
-Title:          "iHRIS Job Type CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-job-type-codesystem)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Job Type"
-* extension[section][0].extension[description].valueString = "Job Type"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
 Instance:       ihris-page-salary-scale
 InstanceOf:     IhrisPage
 Title:          "iHRIS Salary Scale CodeSystem Page"
@@ -455,57 +386,6 @@ Usage:          #example
 * extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
 * extension[section][0].extension[title].valueString = "Reason for Departure"
 * extension[section][0].extension[description].valueString = "Reason for Departure"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
-Instance:       ihris-page-degree
-InstanceOf:     IhrisPage
-Title:          "iHRIS Degree CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-degree)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Degree"
-* extension[section][0].extension[description].valueString = "Degree"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
-Instance:       ihris-page-education-level
-InstanceOf:     IhrisPage
-Title:          "iHRIS Education Level CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-education-level)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Degree"
-* extension[section][0].extension[description].valueString = "Degree"
-* extension[section][0].extension[name].valueString = "CodeSystem"
-* extension[section][0].extension[field][0].valueString = "CodeSystem.display"
-* extension[section][0].extension[field][1].valueString = "CodeSystem.code"
-* extension[section][0].extension[field][2].valueString = "CodeSystem.definition"
-
-Instance:       ihris-page-institution-type
-InstanceOf:     IhrisPage
-Title:          "iHRIS Institution Type CodeSystem Page"
-Usage:          #example
-* code = IhrisResourceCodeSystem#page
-* extension[display].extension[resource].valueReference = Reference(CodeSystem/ihris-institution-type)
-* extension[display].extension[search][0].valueString = "Code|code"
-* extension[display].extension[search][1].valueString = "Display|display"
-* extension[display].extension[field][0].extension[path].valueString = "CodeSystem.code"
-* extension[display].extension[field][0].extension[readOnlyIfSet].valueBoolean = true
-* extension[section][0].extension[title].valueString = "Institution Type"
-* extension[section][0].extension[description].valueString = "Institution Type"
 * extension[section][0].extension[name].valueString = "CodeSystem"
 * extension[section][0].extension[field][0].valueString = "CodeSystem.display"
 * extension[section][0].extension[field][1].valueString = "CodeSystem.code"
